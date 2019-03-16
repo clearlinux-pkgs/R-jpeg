@@ -4,14 +4,14 @@
 #
 Name     : R-jpeg
 Version  : 0.1.8
-Release  : 14
+Release  : 15
 URL      : https://cran.r-project.org/src/contrib/jpeg_0.1-8.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/jpeg_0.1-8.tar.gz
 Summary  : Read and write JPEG images
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0
-Requires: R-jpeg-lib
-BuildRequires : clr-R-helpers
+Requires: R-jpeg-lib = %{version}-%{release}
+BuildRequires : buildreq-R
 BuildRequires : libjpeg-turbo-dev
 
 %description
@@ -33,11 +33,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523310981
+export SOURCE_DATE_EPOCH=1552772333
 
 %install
+export SOURCE_DATE_EPOCH=1552772333
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1523310981
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -72,8 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library jpeg|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  jpeg || :
 
 
 %files
@@ -99,7 +98,7 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/jpeg/html/00Index.html
 /usr/lib64/R/library/jpeg/html/R.css
 /usr/lib64/R/library/jpeg/img/Rlogo.jpg
-/usr/lib64/R/library/jpeg/libs/symbols.rds
+/usr/lib64/R/library/jpeg/tests/jpeg.R
 
 %files lib
 %defattr(-,root,root,-)
