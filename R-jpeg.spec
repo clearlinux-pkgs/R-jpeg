@@ -4,7 +4,7 @@
 #
 Name     : R-jpeg
 Version  : 0.1.8.1
-Release  : 26
+Release  : 27
 URL      : https://cran.r-project.org/src/contrib/jpeg_0.1-8.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/jpeg_0.1-8.1.tar.gz
 Summary  : Read and write JPEG images
@@ -13,7 +13,6 @@ License  : GPL-2.0 GPL-3.0
 Requires: R-jpeg-lib = %{version}-%{release}
 BuildRequires : buildreq-R
 BuildRequires : libjpeg-turbo-dev
-BuildRequires : util-linux
 
 %description
 No detailed description available
@@ -28,21 +27,22 @@ lib components for the R-jpeg package.
 
 %prep
 %setup -q -c -n jpeg
+cd %{_builddir}/jpeg
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572107177
+export SOURCE_DATE_EPOCH=1589511864
 
 %install
-export SOURCE_DATE_EPOCH=1572107177
+export SOURCE_DATE_EPOCH=1589511864
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
