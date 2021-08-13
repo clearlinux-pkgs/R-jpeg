@@ -4,7 +4,7 @@
 #
 Name     : R-jpeg
 Version  : 0.1.9
-Release  : 36
+Release  : 37
 URL      : https://cran.r-project.org/src/contrib/jpeg_0.1-9.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/jpeg_0.1-9.tar.gz
 Summary  : Read and write JPEG images
